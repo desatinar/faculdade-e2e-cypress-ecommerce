@@ -6,7 +6,6 @@ describe('Funcionalidades do Carrinho', () => {
         cy.get('#login-button').click()
     })
 
-
     it('Deve adicionar produto ao carrinho', () => {
         cy.get('#add-to-cart-sauce-labs-backpack').click()
         cy.get('.shopping_cart_badge').click()
@@ -15,6 +14,11 @@ describe('Funcionalidades do Carrinho', () => {
         cy.contains('Sauce Labs Backpack')
     })
 
+    it('Deve remover produto do carrinho', () => {
+        cy.get('#add-to-cart-sauce-labs-backpack').click()
+        cy.get('.shopping_cart_badge').click()
+        cy.get('#remove-sauce-labs-backpack').click()
 
-
+        cy.contains('Sauce Labs Backpack').should('not.exist')
+    })
 })
